@@ -22,7 +22,7 @@ GPIO.setup(12, GPIO.OUT)
 
 tmptime=30.0
 
-MUSIC_DIR = "/home/pi/akabeko_headban/music/"
+MUSICDIR = "/home/pi/akabeko_headban/music/"
 
 
 try:
