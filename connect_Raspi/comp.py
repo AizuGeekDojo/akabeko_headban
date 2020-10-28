@@ -37,7 +37,7 @@ try:
 
             while nowtime - intime < tmptime:
                 GPIO.output(12, True)
-                time.sleep(60.0/60000*2)
+                time.sleep(60.0/160000*2)
                 GPIO.output(12, False)
                 time.sleep(60.0/160000*2)
                 nowtime=time.time()
@@ -86,4 +86,3 @@ try:
 
 except KeyboardInterrupt:
     GPIO.cleanup()
-
