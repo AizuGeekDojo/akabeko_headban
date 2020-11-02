@@ -5,9 +5,9 @@ import pygame.mixer as game
 
 GPIO.setmode(GPIO.BCM)
 
-IN=[20,21,24]
-LED=[23,18,17]
-BPM=[80,116,145]
+IN = [20, 21, 24]
+LED = [23, 18, 17]
+BPM = [80, 116, 145]
 MOTOR=12
 MUSICS=['akabeko1.mp3','akabeko2.mp3','akabeko3145']
 
