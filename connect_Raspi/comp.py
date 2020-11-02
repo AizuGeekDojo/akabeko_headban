@@ -5,84 +5,52 @@ import pygame.mixer as game
 
 GPIO.setmode(GPIO.BCM)
 
-# pin used in mode 1
-GPIO.setup(20, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(23, GPIO.OUT)
+IN=[20,21,24]
+LED=[23,18,17]
+BPM=[80,116,145]
+MOTOR=12
+MUSICS=['akabeko1.mp3','akabeko2.mp3','akabeko3145']
 
-# Pin used in mode 2
-GPIO.setup(21, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(18, GPIO.OUT)
-
-# pin used in mode 3
-GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(17, GPIO.OUT)
+# pin used in mode i
+for i in range(len(IN)):
+	GPIO.setup(IN[i], GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+	GPIO.setup(LED[i], GPIO.OUT)
 
 # pin used in LED flush
-GPIO.setup(12, GPIO.OUT)
+GPIO.setup(MOTOR, GPIO.OUT)
 
 tmptime=30.0
 
-MUSIC_DIR = "/home/pi/akabeko_headban/music/"
-
+MUSICDIR = "../music/" #"/home/pi/akabeko_headban/music"
 
 try:
     while True:
-        if GPIO.input(20) == True:
-            game.init()
-            game.music.load(MUSICDIR + 'akabeko1.mp3')
-            game.music.play(1)
-            GPIO.output(23, True)
-            intime=time.time()
-            nowtime=intime
-
-            while nowtime - intime < tmptime:
-                GPIO.output(12, True)
-                time.sleep(60.0/160000*2)
-                GPIO.output(12, False)
-                time.sleep(60.0/160000*2)
-                nowtime=time.time()
-
-            game.music.stop()
-
-        if GPIO.input(21) == True:
-            game.init()
-            game.music.load(MUSICDIR + 'akabeko2.mp3')
-            game.music.play(1)
-            GPIO.output(18, True)
-            intime=time.time()
-            nowtime=intime
-
-            while nowtime - intime < tmptime:
-                GPIO.output(12, True)
-                time.sleep(116.0/160000*2)
-                GPIO.output(12, False)
-                time.sleep(116.0/160000*2)
-                nowtime=time.time()
-
-            game.music.stop()
-
-        if GPIO.input(24) == True:
-            game.init()
-            game.music.load(MUSICDIR+'akabeko3145.mp3')
-            game.music.play(1)
-            GPIO.output(17, True)
-            intime=time.time()
-            nowtime=intime
-
-            while nowtime - intime < tmptime:
-                GPIO.output(12, True)
-                time.sleep(145.0/160000)
-                GPIO.output(12, False)
-                time.sleep(145.0/160000)
-                nowtime=time.time()
-
-            game.music.stop()
-        else:
-            GPIO.output(23, False)
-            GPIO.output(17, False)
-            GPIO.output(18, False)
-            time.sleep(0.1)
-
-
+	for i in range(len(IN)):
+	    if GPIO.input(IN[i]) == True:
+	    	while GPIO.input(IN[i]) == True:
+	    		continue
+		time.sleep(0.5)
+            	game.init()
+            	game.music.load(MUSICDIR + MUSICS[i])
+            	game.music.set_volume(0.3)
+            	game.music.play(1)
+            	GPIO.output(LED[i], True)
+            	intime=time.time()
+            	intime2=time.time()
+            	flg=True
+            	GPIO.output(12, flg)
+            	while time.time() - intime < tmptime:
+            	    if time.time()-intime2>=BPM[i]/160000.0*2:
+                    	flg= not flg
+			intime2=time.time()
+                    	GPIO.output(MOTOR, flg)
+	            if GPIO.input(IN[i]) == True:
+			while GPIO.input(IN[i])==True:
+				continue
+			break
+                GPIO.output(MOTOR, False)
+		GPIO.output(LED[i],False)
+	        game.music.stop()
+		time.sleep(1)
 except KeyboardInterrupt:
     GPIO.cleanup()
