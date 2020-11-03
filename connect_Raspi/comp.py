@@ -20,61 +20,61 @@ GPIO.setup(17, GPIO.OUT)
 # pin used in LED flush
 GPIO.setup(12, GPIO.OUT)
 
-tmptime=30.0
+tmptime = 30.0
 
 MUSICDIR = "/home/pi/akabeko_headban/music/"
 
 
 try:
     while True:
-        if GPIO.input(20) == True:
+        if GPIO.input(20):
             game.init()
             game.music.load(MUSICDIR + 'akabeko1.mp3')
             game.music.play(1)
             GPIO.output(23, True)
-            intime=time.time()
-            nowtime=intime
+            intime = time.time()
+            nowtime = intime
 
             while nowtime - intime < tmptime:
                 GPIO.output(12, True)
-                time.sleep(60.0/160000*2)
+                time.sleep(60.0 / 160000 * 2)
                 GPIO.output(12, False)
-                time.sleep(60.0/160000*2)
-                nowtime=time.time()
+                time.sleep(60.0 / 160000 * 2)
+                nowtime = time.time()
 
             game.music.stop()
 
-        if GPIO.input(21) == True:
+        if GPIO.input(21):
             game.init()
             game.music.load(MUSICDIR + 'akabeko2.mp3')
             game.music.play(1)
             GPIO.output(18, True)
-            intime=time.time()
-            nowtime=intime
+            intime = time.time()
+            nowtime = intime
 
             while nowtime - intime < tmptime:
                 GPIO.output(12, True)
-                time.sleep(116.0/160000*2)
+                time.sleep(116.0 / 160000 * 2)
                 GPIO.output(12, False)
-                time.sleep(116.0/160000*2)
-                nowtime=time.time()
+                time.sleep(116.0 / 160000 * 2)
+                nowtime = time.time()
 
             game.music.stop()
 
-        if GPIO.input(24) == True:
+        if GPIO.input(24):
             game.init()
-            game.music.load(MUSICDIR+'akabeko3145.mp3')
+            game.music.load(MUSICDIR + 'akabeko3145.mp3')
             game.music.play(1)
             GPIO.output(17, True)
-            intime=time.time()
-            nowtime=intime
+            intime = time.time()
+            nowtime = intime
 
             while nowtime - intime < tmptime:
                 GPIO.output(12, True)
-                time.sleep(145.0/160000)
+                time.sleep(145.0 / 160000)
                 GPIO.output(12, False)
-                time.sleep(145.0/160000)
-                nowtime=time.time()
+                time.sleep(145.0 / 160000)
+                nowtime = time.time()
 
             game.music.stop()
         else:
