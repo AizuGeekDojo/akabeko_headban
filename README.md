@@ -33,7 +33,7 @@
  - BPM == 145
 
 ## 開発に際して
-このプロジェクト内にある全てのpythonスクリプトは [PEP8](https://pep8-ja.readthedocs.io/ja/latest/) に準拠したコーディングスタイルでLinterが走ってくれる。
+このプロジェクト内にある全てのpythonスクリプトは [PEP8](https://pep8-ja.readthedocs.io/ja/latest/) に準拠したコーディングスタイルでLinterが走ってくれます。
 これはgithub action上でチェックされるので、github actionで全てのチェックを通さないとマージすることは出来ません。
 
 手元でgithub actionsが通るかどうかをチェックするためには [act](https://github.com/nektos/act) を使うと便利です。
