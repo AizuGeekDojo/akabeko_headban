@@ -1,6 +1,6 @@
 # akabeko_headban
 
-## 作るもの
+## これは何？
 #### ヘドバン赤べこ
 音楽に合わせてヘドバンする赤べこ．
 何個かの音源をモードセレクトで選択し，モーターを音楽に合わせて駆動させ、接続された赤べこをヘドバンさせる．
@@ -8,7 +8,7 @@
 # Language
 - Python
 
- ### 実際使ったもの
+ ### 使ったもの
 
  - モータードライバ (ステッピングモータ) ROB-12779
  - ステッピングモータ (UniP 5V)
@@ -33,12 +33,12 @@
  - BPM == 145
 
 ## 開発に際して
-このプロジェクト内にある全てのpythonスクリプトは [PEP8](https://pep8-ja.readthedocs.io/ja/latest/) に準拠したコーディングスタイルでLinterが走ってくれる。
-これはgithub action上でチェックされるので、github actionで全てのチェックを通さないとマージすることは出来ない。
+このプロジェクト内にある全てのpythonスクリプトは [PEP8](https://pep8-ja.readthedocs.io/ja/latest/) に準拠したコーディングスタイルでLinterが走ってくれます。
+これはgithub action上でチェックされるので、github actionで全てのチェックを通さないとマージすることは出来ません。
 
-手元でgithub actionsが通るかどうかをチェックするためには [act](https://github.com/nektos/act) を使うと便利。
+手元でgithub actionsが通るかどうかをチェックするためには [act](https://github.com/nektos/act) を使うと便利です。
 
-macの場合は `brew install act` でインストールが可能。 `brew` が使うことが出来ない環境等では以下のコマンドでインストールすることができる。
+macの場合は `brew install act` でインストールが可能。 `brew` が使うことが出来ない環境等では以下のコマンドでインストールすることができます。
 
 ```
 $ curl https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bash
@@ -47,7 +47,7 @@ $ curl https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bas
 ※他のインストール方法等は公式のドキュメントを参照のこと
 
 ### actを使ったgithub actionの確認
-actを使用する準備が出来たら act を使って実際にgithub actionsを手元で確認する。
+actを使用する準備が出来たら act を使って実際にgithub actionsを手元で確認しましょう。
 
 プロジェクトルートで 
 
@@ -55,9 +55,9 @@ actを使用する準備が出来たら act を使って実際にgithub actions�
 $ act
 ```
 
-コマンドを実行すると、自動でgithub actionsが起動する。
+コマンドを実行すると、自動でgithub actionsが起動します。
 
-自動でpep8がチェックされた後にはlintされた結果が出てくる。
+自動でpep8がチェックされた後にはlintされた結果が出てきます。
 
 ```
 | --- original/./connect_Raspi/comp.py
@@ -87,6 +87,6 @@ $ act
 |  
 ```
 
-`-` で示されている行で lint に失敗しているため `+` で示されているように変更する必要がある。
+`-` で示されている行で lint に失敗しているため `+` で示されているように変更する必要があるので、都度変更してください。
 
 これでエラーが出ないように変更すれば実際に push して OK! 開発の補助にお役立て下さい！
